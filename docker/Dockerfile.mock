@@ -1,0 +1,20 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Copy requirements
+COPY docker/requirements.mock.txt requirements.txt
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy mock API files
+COPY docker/mock_api.py .
+COPY mock_appointment_server.py .
+
+# Expose port
+EXPOSE 5001
+EXPOSE 5002
+
+# Run mock API
+CMD ["python", "mock_api.py"]

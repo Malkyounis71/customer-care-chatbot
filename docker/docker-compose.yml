@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # Main chatbot application
+  chatbot:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=False
+      - PORT=8000
+      - QDRANT_HOST=qdrant
+      - MOCK_API_URL=http://mock_api:5001
+    depends_on:
+      - qdrant
+      - mock_api
+    volumes:
+      - ../logs:/app/logs
+      - ../sample_data:/app/sample_data
+  
+  # Vector database for RAG
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+  
+  # Mock external API
+  mock_api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.mock
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=5001
+  
+  # Alternative mock server (Flask)
+  mock_appointment:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.mock
+    command: python mock_appointment_server.py
+    ports:
+      - "5002:5002"
+    environment:
+      - PORT=5002
+
+volumes:
+  qdrant_data:
