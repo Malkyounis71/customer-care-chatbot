@@ -31,7 +31,7 @@ customer-care-chatbot/
 ├── docs/ # Documentation
 ├── docker/ # Docker configuration
 
-![Chatbot Architecture Diagram](architecture.png)
+![Chatbot Architecture Diagram](images/architecture.png)
 
 ## Quick Start
 
