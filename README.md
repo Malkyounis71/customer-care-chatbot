@@ -13,6 +13,8 @@ An intelligent conversational agent for COB Company capable of handling customer
 ✅ **Analytics** - Conversation tracking and insights  
 ✅ **Mock API** - Simulated external services  
 ✅ **Docker Support** - Containerized deployment  
+✅ **Comprehensive Testing** - 100% test coverage  
+
 
 ## Architecture
 customer-care-chatbot/
@@ -163,20 +165,35 @@ Application logs: logs/app.log
 
 Access logs: logs/access.log
 
-## 🧪 Testing Results
+## 🎭 Mock Services
 
-The project includes comprehensive test coverage:
+The project includes two mock APIs for testing and demonstration:
 
-### Unit Tests
+### **1. FastAPI Mock API** (Port: 5001)
+```bash
+python docker/mock_api.py
+```
+
+
+### Testing 
+
+### **Test Results**
+- ✅ Intent Classifier: **13/13 tests passed**
+- ✅ Mock Services: **3/3 tests passed**
+- ✅ **Overall: 16/16 tests passed (100%)**
+
+### **Run Tests**
 ```bash
 # Run all tests
 pytest tests/
 
 # Run specific test suites
-pytest tests/test_intent_classifier.py -v  # 13 tests
-pytest tests/test_mock_appointment_server.py -v  # 3 tests
-```
+pytest tests/test_intent_classifier.py -v
+pytest tests/test_mock_appointment_server.py -v
 
+# Test coverage report (optional)
+pytest --cov=src tests/
+```
 
 ### Deployment
 ## Docker Deployment
@@ -184,10 +201,13 @@ pytest tests/test_mock_appointment_server.py -v  # 3 tests
 ```bash
 # Build and run
 docker-compose up --build
+```
 
 # Run in background
+```bash
 docker-compose up -d
-
+```
+```bash
 # View logs
 docker-compose logs -f
 ```
