@@ -7,8 +7,7 @@ updated: "2024-01-15"
 ## General Questions
 
 ### What are your business hours?
-Our customer support is available Monday through Friday from 9:00 AM to 6:00 PM EST, and Saturdays from 10:00 AM to 2:00 PM EST.
-
+Monday to Friday from 2:00 PM to 10:00 PM EST. Our chatbot is always available 24/7 to assist you.
 ### How can I contact customer support?
 You can reach us through:
 - Phone: 1-800-COB-HELP (1-800-262-4357)
