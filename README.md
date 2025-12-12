@@ -59,13 +59,15 @@ docker run -p 6333:6333 qdrant/qdrant
 3.Start the application:
 ```bash
 # Option 1: Using Python
-python main.py
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --reload-dir app
 
 # Option 2: Using Docker
 docker-compose up
 ```
 
 ### 4.Access the application:
+
+
 
 Web Interface: http://localhost:8000/chat
 
@@ -160,6 +162,21 @@ System status: http://localhost:8000/api/system/status
 Application logs: logs/app.log
 
 Access logs: logs/access.log
+
+## 🧪 Testing Results
+
+The project includes comprehensive test coverage:
+
+### Unit Tests
+```bash
+# Run all tests
+pytest tests/
+
+# Run specific test suites
+pytest tests/test_intent_classifier.py -v  # 13 tests
+pytest tests/test_mock_appointment_server.py -v  # 3 tests
+```
+
 
 ### Deployment
 ## Docker Deployment
